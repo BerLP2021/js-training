@@ -30,7 +30,7 @@ if (personalMovieDB.count < 10) {
 //             fName = "";
 //         }
 //     } while (!fName);
-    
+
 //     do {
 //         rate = prompt('На сколько оцените его?', '');
 //         if (rate == null || rate == '') {
@@ -66,7 +66,4 @@ while (i < 2) {
 }
 
 console.log(personalMovieDB);
-
-
-
 
