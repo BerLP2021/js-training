@@ -37,8 +37,7 @@
 //         continue;
 //       } else {
 //         do {
-//           rate = prompt('На сколько оцените его?', '');
-//           if (rate == '' || rate == null || rate.length > 50) {
+//           rate = ate == '' || rate == null || rate.length > 50) {
 //             alert('Поле не может быть пустым или содержать более 50 символов!');
 //             continue;
 //           } else {
@@ -131,7 +130,19 @@
     }
 Проверить, чтобы все работало без ошибок в консоли */
 
-let numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
+
+
+let numberOfFilms;
+
+function start() {
+  numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
+  while (isNaN(numberOfFilms) || numberOfFilms < 0 || !numberOfFilms) {
+    alert('Вводимые данные должны быть целым неотрицательным числом');
+    numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
+  }
+}
+start();
+
 let personalMovieDB = {
   count: numberOfFilms,
   movies: {},
@@ -139,10 +150,322 @@ let personalMovieDB = {
   genres: [],
   privat: false
 };
-let a = prompt("Один из последних просмотренных фильмов?");
 
-personalMovieDB.movies[a] = prompt('На сколько оцените его?');
-let b = prompt("Один из последних просмотренных фильмов?");
-personalMovieDB.movies[b] = prompt('На сколько оцените его?');
+function rememberMyFilm() {
+  for (let i = 0; i < 2; i++) {
 
-console.log(personalMovieDB);
+    let a = prompt("Один из последних просмотренных фильмов?");
+
+    if (!a || a.length > 50) {
+      alert("Название не должно превышать 50 символов!");
+      i--;
+      continue;
+
+    } else {
+      let b = +prompt('На сколько оцените его?');
+      while (isNaN(b) || b < 0 || !b) {
+        alert('Вводимые данны-1е должны быть целым неотрицательным числом');
+        b = +prompt('На сколько оцените его?');
+      }
+      personalMovieDB.movies[a] = b;
+    }
+  }
+}
+rememberMyFilm();
+
+
+
+function detectPersonalLevel() {
+  if (personalMovieDB.count <= 30) {
+    if (personalMovieDB.count > 10) {
+      alert('Вы классический зритель');
+    } else if (personalMovieDB.count > 0) {
+      alert('Просмотрено довольно мало фильмов');
+    }
+  } else {
+    alert('Вы киноман');
+  }
+}
+detectPersonalLevel();
+
+function showMyDB(hidden) {
+  if (!hidden) console.log(personalMovieDB);
+}
+
+showMyDB(personalMovieDB.privat);
+
+
+function writeYourGenres() {
+  for (let i = 0; i < 3; i++) {
+    let genre = prompt(`Ваш любимый жанр под номером ${i+1}`);
+    personalMovieDB.genres[i] = genre;
+  }
+}
+writeYourGenres();
+
+
+
+
+
+
+// let aa = '*';
+// for (let i = 1; i < 20; i++) {
+//   console.log(aa);
+//   aa += '-*';
+// // }
+
+// let res = '',
+//   lng = 7;
+// for (let i = 1; i < lng; i++) {
+//   for (let j = 1; j <= i; j++) {
+//     res += '*';
+//   };
+//   res += '\n';
+// };
+// console.log(res);
+
+// asc: for (let i = 0; i < 3; i++) {
+//   console.log(`First level ${i}`);
+//   for (let j = 0; j < 3; j++) {
+//     console.log(`    Second level ${j}`);
+//     for (let k = 0; k < 6; k++) {
+//       if (k === 4) continue asc;
+//       console.log(`      Third level ${k}`);
+//     }
+//   }
+// }
+
+// function firstTask() {
+//   // Пишем решение вот тут
+//   let i = 5;
+//   while (i < 11) {
+//     console.log(i++);
+//   }
+// }
+// firstTask();
+
+// function secondTask() {
+//   // Пишем решение вот тут
+//   for (let i = 20; i > 9; i--) {
+//     if (i === 13) break;
+//     console.log(i);
+//   }
+// }
+// secondTask();
+
+// function thirdTask() {
+//   // Пишем решение вот тут
+//   for (let i = 2; i < 11; i++) {
+//     if (i % 2 > 0) continue;
+//     console.log(i);
+//   };
+// }
+// thirdTask();
+
+// let i = 2;
+// while (i <= 16) {
+//   if (i % 2 > 0) {
+//     console.log(i++);
+//   } else i++;
+// }
+
+// let i = 2;
+// while (i <= 16) {
+//   if (i % 2 > 0) {
+//     console.log(i);
+//   };
+//   i++;
+//   continue;
+// }
+
+// for (let i = 2; i <= 16; i++) {
+//   if (i % 2 === 0) {
+//     continue;
+//   } else {
+//     console.log(i);
+//   }
+// }
+
+// function fourthTask() {
+//   // Пишем решение вот тут
+//   let i = 2;
+//   while (i <= 16) {
+//     if (i % 2 > 0) {
+//       console.log(i++);
+//     } else i++;
+//   }
+// }
+// fourthTask();
+
+// function fifthTask() {
+//   const arrayOfNumbers = [];
+//   let j = 0;
+//   for (let i = 5; i < 11; i++) {
+//     arrayOfNumbers[j] = i;
+//     j++;
+//   };
+//   console.log(arrayOfNumbers);
+// }
+// fifthTask();
+
+// function fifthTask() {
+//   const arrayOfNumbers = [];
+//   for (let i = 5; i < 11; i++) {
+//     arrayOfNumbers[i - 5] = i;
+//   }
+//   console.log(arrayOfNumbers);
+// }
+// fifthTask();
+
+
+// Место для первой задачи
+// function firstTask() {
+//   // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
+//   const arr = [3, 5, 8, 16, 20, 23, 50];
+//   const result = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     result[i] = arr[i];
+//   }
+//   // Пишем решение вот тут
+
+//   console.log(result);
+//   // Не трогаем
+//   return result;
+// }
+// firstTask();
+
+// Место для второй задачи
+// function secondTask() {
+//   // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
+//   const data = [5, 10, 'Shopping', 20, 'Homework'];
+//   for (let i = 0; i < data.length; i++) {
+//     // console.log(typeof (data[i]));
+//     if (typeof (data[i]) == 'string') {
+//       data[i] += '-done';
+//     } else if (typeof (data[i]) == 'number') {
+//       data[i] *= 2;
+//     }
+//   }
+//   console.log(data);
+// }
+// secondTask()
+
+// let bb = ['dere'];
+// bb[0] = bb[0] + ' erer';
+// console.log(bb[0]);
+
+// Место для третьей задачи
+// function thirdTask() {
+//   // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
+//   const data = [5, 10, 'Shopping', 20, 'Homework'];
+//   const result = [];
+//   for (let i = 0; i < data.length; i++) {
+//     result[data.length - i - 1] = data[i];
+//   }
+//   // Пишем решение вот тут
+
+//   console.log(result);
+//   // Не трогаем
+//   return result;
+// }
+
+
+// const lines = 5;
+// let result = '';
+// // Проверяется именно переменная result, формируйте строку в ней
+// for (let i = 1; i < 7; i++) {
+//   for (let j = 1; j < 7 - i; j++) {
+//     result = result + ' ';
+//   }
+//   for (let k = 1; k < 2 * i; k++) {
+//     result = result + '*';
+//   }
+//   result = result + '\n';
+// }
+// console.log(result);
+
+
+// const lines = 5;
+// let result = '';
+// // Проверяется именно переменная result, формируйте строку в ней
+// for (let i = 1; i <= lines + 1; i++) {
+//   for (let j = 1; j <= lines - i + 1; j++) {
+//     result = result + ' ';
+//   }
+//   for (let k = 1; k < 2 * i; k++) {
+//     result = result + '*';
+//   }
+//   result = result + '\n';
+// }
+
+
+// function returnNeighboringNumbers(a, b) {
+//   let arr = [];
+//   for (let i = 0; i <= b * 2; i++) {
+//     arr[i] = a + i - b;
+//   }
+//   console.log(arr);
+// }
+// returnNeighboringNumbers(-0, 100);
+
+
+
+// function getMathResult(x, n) {
+//   let res = x;
+//   if (typeof (n) == "number" && n > 0) {
+//     for (let i = 2; i <= n; i++) {
+//       res = res + '-' + x * i;
+//     }
+//   } else {
+//     res = x;
+//   }
+//   return res
+// }
+// console.log(getMathResult(5, 'mk'));
+// a = rgb(0, 0, 0);
+
+// let coun = 5;
+
+// function createCounter() {
+//   let counter = 5;
+
+//   function myFunction() {
+//     counter = counter + 1;
+//     return counter;
+//   }
+//   return myFunction;
+// }
+
+// const increment = createCounter();
+// console.log(increment() + increment());
+// const c1 = increment();
+// const c2 = increment();
+// const c3 = increment();
+// console.log('example increment', c1, c2, c3);
+
+
+// function isAN(value) {
+//   if (value instanceof Number)
+//     value = value.valueOf(); // Если это объект числа, то берём значение, которое и будет числом
+
+//   return isFinite(value) && value === parseInt(value, 10);
+// }
+// let xx = 0;
+// console.info(typeof (isFinite(xx) && xx) == 'number');
+// console.info(isAN(null));
+// console.info(isAN(new Number(1)));
+
+// function typeOfNaN(x) {
+//   if (Number.isNaN(x)) {
+//     return 'Number is NaN';
+//   }
+//   if (isNaN(x)) {
+//     return 'is NaN';
+//   }
+// }
+
+// console.log(typeOfNaN('100F'));
+// // expected output: "NaN"
+
+// console.log(typeOfNaN(NaN));
+// // expected output: "Number NaN"
