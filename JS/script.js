@@ -469,3 +469,86 @@ writeYourGenres();
 
 // console.log(typeOfNaN(NaN));
 // // expected output: "Number NaN"
+
+
+// Lesson 29. Additional tasks
+//           #1
+// function calculateVolumeAndArea(a) {
+//   if (typeof (a) == 'number' && a > 0 && Number.isInteger(a)) {
+//     let volume = Math.pow(a, 3);
+//     let area = Math.pow(a, 2) * 6;
+//     return `Объем куба: ${volume}, площадь всей поверхности: ${area}`;
+//   } else {
+//     return 'При вычислении произошла ошибка';
+//   }
+// }
+// console.log(calculateVolumeAndArea(2));
+
+
+//           #2
+// function getCoupeNumber(place) {
+
+//   if (place > 0 && place <= 36 && typeof (place) == 'number' && Number.isInteger(place)) {
+//     return Math.ceil(place / 4);
+//   } else if (place == 0 || place > 36) {
+//     return 'Таких мест в вагоне не существует';
+//   } else {
+//     return "Ошибка. Проверьте правильность введенного номера места";
+//   }
+// }
+
+// exersice 8
+// #2
+// function findMaxNumber(a, b, c, d) {
+//   if (typeof (a) == 'number' && typeof (b) == 'number' && typeof (c) == 'number' && typeof (d) == 'number') {
+//     return Math.max(a, b, c, d)
+//   } else {
+//     return 0
+//   }
+// }
+// console.log(findMaxNumber(0, 10, 2, -500));
+
+// #1
+// function getTimeFromMinutes(a) {
+//   if (typeof (a) == 'number' && Number.isInteger(a)) {
+//     let hour = parseInt(a / 60),
+//       min = a - hour * 60;
+//     if (hour == 1 || hour == 21) {
+//       return `Это ${hour} час и ${min} минут`;
+//     } else if (hour >= 2 && hour <= 4 || hour >= 22 && hour <= 24) {
+//       return `Это ${hour} часа и ${min} минут`;
+//     } else if (hour === 0 || hour >= 5) {
+//       return `Это ${hour} часов и ${min} минут`;
+//     }
+//   } else {
+//     return 'Ошибка, проверьте данные'
+//   }
+// }
+// console.log(getTimeFromMinutes(-50));
+
+// console.log(typeof (getTimeFromMinutes(245)));
+
+// Фибоначчи
+// function fib(e) {
+//   let arr = [0, 1],
+//     res = '0 1';
+//   if (e == 1) {
+//     return '0'
+//   } else if (typeof (e) != 'number' || e === 0 || e < 0) {
+//     return ''
+//   } else if (Number.isInteger(e)) {
+//     for (let i = 2; i < e; i++) {
+//       arr[i] = arr[i - 1] + arr[i - 2];
+//       res += ` ${arr[i]}`;
+//     }
+//     return res;
+//   }
+// }
+
+// console.log(fib(0));
+// console.log(fib(1));
+// console.log(fib(2));
+// console.log(fib('0'));
+// console.log(fib(8));
+// console.log(fib(-14));
+// console.log(fib(20));
